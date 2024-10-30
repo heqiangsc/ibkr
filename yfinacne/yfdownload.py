@@ -12,4 +12,4 @@ print('AAPL Day High: ', aapl_info['dayHigh'])
 #aapl_history_max.head()
 
 aapl_history_1m = aapl.history(start="2024-10-01", end="2024-10-15", interval="2m")
-aapl_history_1m.head()
+print(aapl_history_1m.head())
