@@ -6,7 +6,7 @@ import yfinance as yf
 class TestStrategy(bt.Strategy):
     def next(self):
         # Simply log the closing price of the series from the reference
-        self.log('Close, %.2f' % self.dataclose[0])
+        print('Close, %.2f' % self.dataclose[0])
 
 
 # Create a cerebro entity
