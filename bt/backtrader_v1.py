@@ -3,25 +3,22 @@ import yfinance as yf
 
 
 # Create a subclass of bt.Strategy
-class TestStrategy(bt.Strategy):
-    def next(self):
-        # Simply log the closing price of the series from the reference
-        print('Close, %.2f' % self.dataclose[0])
 
 
 # Create a cerebro entity
 cerebro = bt.Cerebro()
 
 # Add a strategy
-cerebro.addstrategy(TestStrategy)
+#cerebro.addstrategy(TestStrategy)
 
 # Create a Data Feed
 
 
 data = bt.feeds.PandasData(dataname=yf.download("MSFT",
                                                 start="2024-06-01",
-                                                end="2026-10-20"))
+                                                end="2024-10-20"))
 
+print(data)
 # Add the Data Feed to Cerebro
 cerebro.adddata(data)
 # Set our desired cash start
