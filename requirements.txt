@@ -1,2 +1,3 @@
 backtrader==1.9.78.123
+SQLAlchemy==1.3.17
 yfinance==0.2.47
