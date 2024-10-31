@@ -1,5 +1,8 @@
 import yfinance as yf
 from sqlalchemy import create_engine
+import mysql.connector
+
+
 engine = create_engine("mysql+mysqlconnector://root:R3OzbedF!wi!@47.254.66.136:3306/yfinance?charset=utf8mb4")
 aapl = yf.Ticker('AAPL')
 #获取股票的history数据
