@@ -18,7 +18,6 @@ data = bt.feeds.PandasData(dataname=yf.download("MSFT",
                                                 start="2024-06-01",
                                                 end="2024-10-20"))
 
-print(data)
 # Add the Data Feed to Cerebro
 cerebro.adddata(data)
 # Set our desired cash start
