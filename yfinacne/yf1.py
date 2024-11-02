@@ -13,7 +13,10 @@ import time
 num = len(sys.argv) - 1  # 参数个数
 if num < 1:
     exit("参数错误,必须传环境变量!比如: python3 xx.py dev|pro|test")
+
+print(sys.argv[1])
 params = json.loads(sys.argv[1])
+
 
 begin_date = params['begin'] if "begin" in params else None  # 开始时间
 end_date = params['end'] if "end" in params else None  # 结束时间
