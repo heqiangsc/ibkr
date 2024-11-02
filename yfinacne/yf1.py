@@ -31,5 +31,14 @@ engine = create_engine("mysql+mysqlconnector://root:R3OzbedF!wi!@47.254.66.136:3
 aapl = yf.Ticker(contractSymbol)
 #获取股票的history数据
 aapl_history_2m = aapl.history(start=begin_date, end=end_date, interval=interval)
-aapl_history_2m.to_sql(contractSymbol+"_history_"+interval, engine, if_exists="append")
+aapl_history_2m.rename(columns={'Datetime': 'date', 'Open': 'open',
+                                'Close': 'close', 'High': 'high',
+                                'Low': 'low',
+                                'Volume': 'volume', 'Dividends': 'dividends',
+                                'Stock Splits': 'stock_splits'}, inplace=True)
+aapl_history_2m['ticker'] = contractSymbol;
+aapl_history_2m['interval'] = interval;
+
+
+aapl_history_2m.to_sql('tticker', engine, if_exists="append")
 print(aapl_history_2m.head())
