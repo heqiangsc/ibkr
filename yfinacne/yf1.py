@@ -19,12 +19,14 @@ begin_date = params['begin'] if "begin" in params else None  # 开始时间
 end_date = params['end'] if "end" in params else None  # 结束时间
 file_name = params['file_name'] if 'file_name' in params else None
 contractSymbol = params['cs'] if 'cs' in params else None
+interval = params['interval'] if 'interval' in params else None
+
 
 
 
 engine = create_engine("mysql+mysqlconnector://root:R3OzbedF!wi!@47.254.66.136:31321/yfinance?charset=utf8")
-aapl = yf.Ticker('AAPL')
+aapl = yf.Ticker(contractSymbol)
 #获取股票的history数据
-aapl_history_2m = aapl.history(start="2024-10-30", end="2024-10-31", interval="2m")
-aapl_history_2m.to_sql("aapl_history_2m", engine, if_exists="append")
+aapl_history_2m = aapl.history(start=begin_date, end=end_date, interval=interval)
+aapl_history_2m.to_sql(contractSymbol+"_history_"+interval, engine, if_exists="append")
 print(aapl_history_2m.head())
